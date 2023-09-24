@@ -19,11 +19,11 @@ const onGenerateSubmit = (e) => {
     setTimeout(() => {
       hideSpinner();
       generateQRCode(url, size);
-      showScanner();
+
       // Generate the save button after the qr code image src is ready
       setTimeout(() => {
         // Get save url
-        const saveUrl = qr.querySelector("canvas").toDataURL();
+        const saveUrl = qr.querySelector("img").src;
         // Create save button
         createSaveBtn(saveUrl);
       }, 50);
@@ -49,12 +49,6 @@ const clearUI = () => {
   }
 };
 
-// hide  scanner
-const showScanner = () => {
-  const scanner = document.getElementById("qrCodeContainer");
-  scanner.style.display = "block";
-};
-
 // Show spinner
 const showSpinner = () => {
   const spinner = document.getElementById("spinner");
@@ -72,12 +66,10 @@ const createSaveBtn = (saveUrl) => {
   const link = document.createElement("a");
   link.id = "save-link";
   link.classList =
-    "bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded w-1/3 m-auto my-5";
-  link.innerHTML = "Save Image";
-
+    "bg-slate-500 hover:bg-gray-700 text-white font-bold py-4 rounded w-1/3 m-auto my-5 mt-2 ";
   link.href = saveUrl;
-  link.download = "qrcode.png";
-
+  link.download = "qrcode";
+  link.innerHTML = "Save Image";
   document.getElementById("generated").appendChild(link);
 };
 
