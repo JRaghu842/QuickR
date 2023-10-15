@@ -68,7 +68,7 @@ const createSaveBtn = (saveUrl) => {
   link.classList =
     "bg-slate-500 hover:bg-gray-700 text-white font-bold py-4 rounded w-1/3 m-auto my-5 mt-2 ";
   link.href = saveUrl;
-  link.download = "qrcode";
+  link.download = "qrcode.png";
   link.innerHTML = "Save Image";
   document.getElementById("generated").appendChild(link);
 };
